@@ -41,7 +41,7 @@ $hsv
 // Creative Commons Attribution-NonCommercial-ShareAlike 3.0 Unported License
 
 const float MAX_TRACE_DISTANCE = 2.0;             // max trace distance
-const float INTERSECTION_PRECISION = 0.01;        // precision of the intersection
+const float INTERSECTION_PRECISION = 0.1;        // precision of the intersection
 const int NUM_OF_TRACE_STEPS = 10;
 const float PI = 3.14159;
 
