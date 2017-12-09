@@ -1,4 +1,4 @@
-#define SONGS 7
+#define SONGS 14
 
 uniform float time;
 uniform sampler2D t_audio;
@@ -213,30 +213,30 @@ vec2 map( vec3 pos ){
 
 
     for( int i = 0; i < SONGS; i++ ){
-      vec2 c = vec2( sdSphere( pos  - links[i].xyz , .1 ) , 1.);
+      vec2 c = vec2( sdSphere( pos  - links[i].xyz , .01 ) , 1.);
      
       res = smoothSub(c,res , 30.1 ) ;
     }
     for( int i = 0; i < SONGS; i++ ){
-      vec2 c = vec2( sdSphere( pos  - links[i].xyz , .1 ) , 1.);
+      vec2 c = vec2( sdSphere( pos  - links[i].xyz , .01 ) , 1.);
       res = opU( res , c  );
     }
 
 
-
-
-    vec2 cut = vec2( sdBox( pos -  vec3( 0. , 0., 0.2 ) , dimensions  * .2 + vec3( 0. , .4 , 0. )  ) , 3.);
-    res = opS( cut , res );
-
-    vec2 dot = vec2( sdSphere( pos - vec3( 0. , .6 , 0.15 ) , .2  ) , 3.);
+    vec2 dot = vec2( sdSphere( pos - vec3( 0. , .84 , 0.05 ) , .2  ) , 3.);
     res = opS( dot , res );
       
+
+    vec2 cut = vec2( sdBox( pos -  vec3( 0. , 0., 0.2 ) , dimensions  * .2 + vec3( 0. , .55 , 0.1 )  ) , 3.);
+    res = opS( cut , res );
+
+   
 
 
     vec2 caps;
 
     if( hoveredLink.w > .1 ){
-      caps = vec2( sdSphere( pos  - hoveredLink.xyz , .13 ) , 2. );
+      caps = vec2( sdSphere( pos  - hoveredLink.xyz , .001 ) , 2. );
       //caps = vec2( sdCapsule( pos , hoveredLink.xyz ,  hoveredLink.xyz * .8 , .03 ) , 30. );
       res = smoothU( res , caps , .1 ) ;
     }

@@ -186,10 +186,27 @@ DragonFish.prototype.addBoss = function( vertabrae ){
 
 DragonFish.prototype.createVertabrae = function( dom , m1 , m2 , m3 , m4 , id ){
 
+  var mesh = new THREE.Mesh(  G.models.feather.geometry , fishSkeleton.flagella.child2.material );
+
   var m1 = m1 || fishSkeleton.flagella.spine;
   var m2 = m2 || fishSkeleton.flagella.child1;
   var m3 = m3 || fishSkeleton.flagella.child2;
   var m4 = m4 || fishSkeleton.flagella.child3;
+
+  mesh.scale.multiplyScalar( .015 );
+
+  mesh.rotation.x = -Math.PI * .5;
+
+
+  var n = new THREE.Object3D();
+  n.add( mesh );
+
+  m1 = n; //new THREE.Mesh(  G.models.feather.geometry , m1.material );//n;
+  m2 = n; //new THREE.Mesh(  G.models.feather.geometry , m2.material );//n;
+  m3 = n; //new THREE.Mesh(  G.models.feather.geometry , m1.material );//n;
+  m4 = n; //new THREE.Mesh(  G.models.feather.geometry , m1.material );//n;
+
+
 
   var vertabrae = new Fish( dom , .8 , m1  , id );
   vertabrae.position.copy( dom.position );
